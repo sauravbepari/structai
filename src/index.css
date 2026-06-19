@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --grid-color: rgba(49, 130, 206, 0.08);
+  --grid-size: 40px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0a1628;
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Engineering blueprint grid background */
+.blueprint-grid {
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(rgba(49, 130, 206, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(49, 130, 206, 0.03) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size), var(--grid-size) var(--grid-size), 8px 8px, 8px 8px;
+  animation: gridPan 30s linear infinite;
+}
+
+/* Glowing border for cards */
+.glow-border {
+  border: 1px solid rgba(49, 130, 206, 0.3);
+  box-shadow: 0 0 20px rgba(49, 130, 206, 0.05), inset 0 0 20px rgba(49, 130, 206, 0.02);
+}
+
+.glow-border:hover {
+  border-color: rgba(49, 130, 206, 0.6);
+  box-shadow: 0 0 30px rgba(49, 130, 206, 0.15), inset 0 0 20px rgba(49, 130, 206, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* SVG drawing animation */
+.draw-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 2s ease-in-out forwards;
+}
+
+/* Scan line effect */
+.scan-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(49, 130, 206, 0.8), transparent);
+  animation: scan 2.5s linear infinite;
+  pointer-events: none;
+}
+
+/* Code/mono text styling */
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a1628;
+}
+::-webkit-scrollbar-thumb {
+  background: #334e68;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #486581;
+}
+
+/* Typing cursor animation */
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: #63b3ed;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Loading dots */
+.loading-dots span {
+  animation: loadingDot 1.4s ease-in-out infinite;
+}
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes loadingDot {
+  0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+  40% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Blueprint corner decorations */
+.blueprint-corner::before,
+.blueprint-corner::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: rgba(49, 130, 206, 0.5);
+  border-style: solid;
+}
+.blueprint-corner::before {
+  top: 8px; left: 8px;
+  border-width: 2px 0 0 2px;
+}
+.blueprint-corner::after {
+  bottom: 8px; right: 8px;
+  border-width: 0 2px 2px 0;
+}
+
+/* Fade-up animation utility */
+.animate-fade-up {
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+/* Stagger children */
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes gridPan {
+  0%   { background-position: 0 0, 0 0, 0 0, 0 0; }
+  100% { background-position: 40px 40px, 40px 40px, 8px 8px, 8px 8px; }
+}
+@keyframes scan {
+  0%   { top: -2px; }
+  100% { top: 100%; }
+}
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
