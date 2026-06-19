@@ -6,6 +6,7 @@ const navItems = [
   { to: '/calculate', icon: '∑', label: 'Calculator' },
   { to: '/units', icon: '⇄', label: 'Unit Converter' },
   { to: '/knowledge', icon: '◈', label: 'Knowledge Base' },
+  { to: '/floorplan', icon: '▣', label: 'Floor Plan' },
   { to: '/training', icon: '◈', label: 'Training Hub' },
   { to: '/history', icon: '◷', label: 'History' },
 ]

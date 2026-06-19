@@ -9,6 +9,7 @@ import UnitConverterPage from './pages/UnitConverterPage'
 import KnowledgePage from './pages/KnowledgePage'
 import HistoryPage from './pages/HistoryPage'
 import TrainingHubPage from './pages/TrainingHubPage'
+import FloorPlanPage from './pages/FloorPlanPage'
 
 function AppShell() {
   return (

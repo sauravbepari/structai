@@ -4,7 +4,7 @@ import { useAppStore } from '../store'
 import { buildSystemPrompt } from '../utils/calculations'
 
 const GROQ_API = 'https://api.groq.com/openai/v1/chat/completions'
-const API_KEY = import.meta.env.VITE_GROQ_API_KEY
+const API_KEY = import.meta.env.VITE_GROQ_KEY
 
 function LoadingDots() {
   return (
