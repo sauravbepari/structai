@@ -156,3 +156,10 @@ body {
 @keyframes drawLine {
   to { stroke-dashoffset: 0; }
 }
+
+/* Allow text selection in chat */
+.select-text {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}
+

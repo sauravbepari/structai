@@ -4,7 +4,7 @@ import { useAppStore } from '../store'
 import { buildSystemPrompt } from '../utils/calculations'
 
 const GROQ_API = 'https://api.groq.com/openai/v1/chat/completions'
-const API_KEY = import.meta.env.VITE_GROQ_API_KEY
+const API_KEY = import.meta.env.VITE_GROQ_KEY
 
 function LoadingDots() {
   return (
@@ -41,7 +41,7 @@ function Message({ msg }) {
           </div>
         )}
         {msg.loading ? <LoadingDots /> : (
-          <pre className="whitespace-pre-wrap font-sans text-sm">{msg.content}</pre>
+          <p className="whitespace-pre-wrap font-sans text-sm select-text cursor-text">{msg.content}</p>
         )}
       </div>
     </div>
